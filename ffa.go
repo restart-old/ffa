@@ -15,6 +15,10 @@ type FFA interface {
 }
 
 func TeleportToFFA(p *player.Player, ffa FFA) {
+	if ffa == nil || ffa.World() == nil || p == nil {
+		return
+	}
+
 	ffa.World().AddEntity(p)
 	p.Teleport(ffa.Position())
 
